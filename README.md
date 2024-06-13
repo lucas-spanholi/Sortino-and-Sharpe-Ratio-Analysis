@@ -41,8 +41,8 @@ The Sharpe Ratio and Sortino Ratio are crucial metrics for assessing the risk-ad
 3. Install the required packages:
    pip install -r requirements.txt
 ## Usage
-# Calculating Sharpe and Sortino Ratios
-# The notebook includes a function get_sharpe_sortino that calculates the rolling Sharpe and Sortino Ratios for the given data.
+Calculating Sharpe and Sortino Ratios
+The notebook includes a function get_sharpe_sortino that calculates the rolling Sharpe and Sortino Ratios for the given data.
 
 def get_sharpe_sortino(data, rf):
   for i in range(len(data.columns)):
@@ -51,7 +51,7 @@ def get_sharpe_sortino(data, rf):
   return data
 
 ## Plotting Performance
-# The notebook provides a function plot_sharpe_sortino that generates separate plots for each asset, displaying their Sharpe and Sortino Ratios alongside their log-transformed performance.
+The notebook provides a function plot_sharpe_sortino that generates separate plots for each asset, displaying their Sharpe and Sortino Ratios alongside their log-transformed performance.
 
 def plot_sharpe_sortino(data, *tickers):
     for ticker in tickers:
@@ -108,11 +108,12 @@ def plot_sharpe_sortino(data, *tickers):
         fig.show()
 
 # Example usage:
-# Ensure that `data` is a DataFrame containing the columns 'BTC_sharpe', 'BTC_sortino', and 'BTC'
+Ensure that `data` is a DataFrame containing the columns 'BTC_sharpe', 'BTC_sortino', and 'BTC'
+
 plot_sharpe_sortino(data, 'BTC', 'S&P500')
 
 ## Calculating Pearson Correlation
-# The notebook includes a function pearson_correlation that calculates the Pearson correlation coefficient between the Sharpe and Sortino Ratios for the specified tickers.
+The notebook includes a function pearson_correlation that calculates the Pearson correlation coefficient between the Sharpe and Sortino Ratios for the specified tickers.
 
 def pearson_correlation(data, *tickers):
     for ticker in tickers:
@@ -123,7 +124,7 @@ def pearson_correlation(data, *tickers):
 pearson_correlation(data, 'BTC', 'S&P500')
 
 ## Examples
-# Scatter Plot of BTC Sharpe vs. Sortino Ratios
+Scatter Plot of BTC Sharpe vs. Sortino Ratios
 
 fig_corr = go.Figure()
 
