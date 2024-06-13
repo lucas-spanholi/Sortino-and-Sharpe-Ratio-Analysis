@@ -53,6 +53,7 @@ def get_sharpe_sortino(data, rf):
 ## Plotting Performance
 The notebook provides a function plot_sharpe_sortino that generates separate plots for each asset, displaying their Sharpe and Sortino Ratios alongside their log-transformed performance.
 
+
 def plot_sharpe_sortino(data, *tickers):
     for ticker in tickers:
         fig = make_subplots(specs=[[{"secondary_y": True}]])
