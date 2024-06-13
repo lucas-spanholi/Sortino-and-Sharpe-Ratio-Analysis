@@ -60,8 +60,9 @@ def get_sharpe_sortino(data, rf):
     return data
 
 # Plotting Performance
-The notebook provides a function plot_sharpe_sortino that generates separate plots for each asset, displaying their Sharpe and Sortino Ratios alongside their log-transformed performance.
+# The notebook provides a function plot_sharpe_sortino that generates separate plots for each asset, displaying their Sharpe and Sortino Ratios alongside their log-transformed performance.
 
+```
 def plot_sharpe_sortino(data, *tickers):
     for ticker in tickers:
         fig = make_subplots(specs=[[{"secondary_y": True}]])
@@ -120,9 +121,10 @@ def plot_sharpe_sortino(data, *tickers):
 # Ensure that `data` is a DataFrame containing the columns 'BTC_sharpe', 'BTC_sortino', and 'BTC'
 plot_sharpe_sortino(data, 'BTC', 'S&P500')
 
-Calculating Pearson Correlation
-The notebook includes a function pearson_correlation that calculates the Pearson correlation coefficient between the Sharpe and Sortino Ratios for the specified tickers.
+#Calculating Pearson Correlation
+# The notebook includes a function pearson_correlation that calculates the Pearson correlation coefficient between the Sharpe and Sortino Ratios for the specified tickers.
 
+```
 def pearson_correlation(data, *tickers):
     for ticker in tickers:
         corr, p = stats.pearsonr(data[f'{ticker}_sharpe'], data[f'{ticker}_sortino'])
@@ -131,9 +133,10 @@ def pearson_correlation(data, *tickers):
 # Example usage:
 pearson_correlation(data, 'BTC', 'S&P500')
 
-Examples
-Scatter Plot of BTC Sharpe vs. Sortino Ratios
+# Examples
+# Scatter Plot of BTC Sharpe vs. Sortino Ratios
 
+```
 fig_corr = go.Figure()
 
 fig_corr.add_trace({'type': 'scatter',
