@@ -24,37 +24,31 @@ Modular and Extensible: Easily extendable to include more assets or other risk m
 Installation
 Clone the repository:
 
-bash
-Copiar código
 git clone https://github.com/your-username/bitcoin-sp500-analysis.git
 cd bitcoin-sp500-analysis
+
 Create a virtual environment:
 
-bash
-Copiar código
 python -m venv env
 source env/bin/activate  # On Windows, use `env\Scripts\activate`
+
 Install the required packages:
 
-bash
-Copiar código
 pip install -r requirements.txt
+
 Usage
 Calculating Sharpe and Sortino Ratios
 The notebook includes a function get_sharpe_sortino that calculates the rolling Sharpe and Sortino Ratios for the given data.
 
-python
-Copiar código
 def get_sharpe_sortino(data, rf):
     for i in range(len(data.columns)):
         data[data.columns[i]+'_sharpe'] = qs.stats.rolling_sharpe(data[data.columns[i]], rf=rf)
         data[data.columns[i]+'_sortino'] = qs.stats.rolling_sortino(data[data.columns[i]], rf=rf)
     return data
+
 Plotting Performance
 The notebook provides a function plot_sharpe_sortino that generates separate plots for each asset, displaying their Sharpe and Sortino Ratios alongside their log-transformed performance.
 
-python
-Copiar código
 def plot_sharpe_sortino(data, *tickers):
     for ticker in tickers:
         fig = make_subplots(specs=[[{"secondary_y": True}]])
@@ -112,11 +106,10 @@ def plot_sharpe_sortino(data, *tickers):
 # Example usage:
 # Ensure that `data` is a DataFrame containing the columns 'BTC_sharpe', 'BTC_sortino', and 'BTC'
 plot_sharpe_sortino(data, 'BTC', 'S&P500')
+
 Calculating Pearson Correlation
 The notebook includes a function pearson_correlation that calculates the Pearson correlation coefficient between the Sharpe and Sortino Ratios for the specified tickers.
 
-python
-Copiar código
 def pearson_correlation(data, *tickers):
     for ticker in tickers:
         corr, p = stats.pearsonr(data[f'{ticker}_sharpe'], data[f'{ticker}_sortino'])
@@ -124,10 +117,10 @@ def pearson_correlation(data, *tickers):
 
 # Example usage:
 pearson_correlation(data, 'BTC', 'S&P500')
+
 Examples
 Scatter Plot of BTC Sharpe vs. Sortino Ratios
-python
-Copiar código
+
 fig_corr = go.Figure()
 
 fig_corr.add_trace({'type': 'scatter',
@@ -142,6 +135,7 @@ fig_corr.update_layout(template='simple_white', paper_bgcolor="#f7f8fa",
                        width=500, height=500)
 
 fig_corr.show()
+
 Contributing
 We welcome contributions! Please follow these steps:
 
